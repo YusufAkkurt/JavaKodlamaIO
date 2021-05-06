@@ -16,6 +16,11 @@ public record AuthManager(UserService userService) implements AuthService {
         boolean checkMail = MailRegex.emailControl(user.getEmail());
         boolean userExists = userService.getByEmail(user.getEmail().toLowerCase(Locale.ROOT));
 
+        if (user.getPassword().length() < 6){
+            System.out.println("Şifreniz en az 6 karakter olmalıdır");
+            return;
+        }
+
         if (!checkMail){
             System.out.println("Geçersiz format! Email adresinizi kontrol edin");
             return;
