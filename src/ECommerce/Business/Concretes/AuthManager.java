@@ -2,6 +2,7 @@ package ECommerce.Business.Concretes;
 
 import ECommerce.Business.Abstracts.AuthService;
 import ECommerce.Business.Abstracts.UserService;
+import ECommerce.Business.Validations.Auth.LoginValidation;
 import ECommerce.Business.Validations.Auth.RegisterValidation;
 import ECommerce.Core.Adapters.AuthServiceExternal;
 import ECommerce.Entities.Concretes.User;
@@ -18,6 +19,13 @@ public class AuthManager implements AuthService {
     }
 
     public void login(User user) {
+        boolean validationResult = LoginValidation.checkValidate(user);
+        if (!validationResult) {
+            System.out.println("----------------------------");
+            System.out.println("Giriş işlemi başarısız");
+            return;
+        }
+
         if (!user.checkActivationCode()){
             System.out.println("Giriş işlemi başarısız");
             System.out.println("Aktivasyon kodunu onaylamadan giriş yapamazsınız");

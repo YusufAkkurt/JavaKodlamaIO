@@ -15,10 +15,10 @@ public class Main {
         );
 
         System.out.println("----------------------------");
-        authManager.registerWithGoogle(user);
+        authManager.register(user);
         System.out.println("----------------------------");
-        user.setConfirmActivationCode("YUAK123");
+        user.setConfirmActivationCode("YUAK23");
         System.out.println("----------------------------");
-        authManager.loginWithGoogle(user);
+        authManager.login(user);
     }
 }
