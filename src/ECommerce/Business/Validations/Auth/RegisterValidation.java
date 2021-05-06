@@ -6,32 +6,40 @@ import ECommerce.Entities.Concretes.User;
 import java.util.Locale;
 
 public class RegisterValidation implements Validation {
-    public static boolean checkValidate(User user){
-        boolean result = checkEmailFormat(user.getEmail());
-        if (result) {
-            result = checkPasswordLength(user.getPassword());
-        }
+    private static boolean resultOfRule = true;
 
-        return result;
+    public static boolean checkValidate(User user) {
+        checkEmailFormat(user.getEmail());
+        checkPasswordLength(user.getPassword());
+        checkMinLength(user.getFirstName(), user.getLastName());
+
+        return resultOfRule;
     }
 
-    private static boolean checkEmailFormat(String email){
-        boolean result = MailRegex.emailControl(email.toLowerCase(Locale.ROOT));
+    private static void checkEmailFormat(String email) {
+        resultOfRule = MailRegex.emailControl(email.toLowerCase(Locale.ROOT));
 
-        if (!result)
+        if (!resultOfRule)
             System.out.println("Geçersiz format! Email adresinizi kontrol edin");
 
-        return result;
     }
 
-    private static boolean checkPasswordLength(String password){
-        boolean result = true;
-
-        if (password.length() < 6){
+    private static void checkPasswordLength(String password) {
+        if (password.length() < 6) {
             System.out.println("Şifreniz en az 6 karakter olmalıdır");
-            result = false;
+            resultOfRule = false;
+        }
+    }
+
+    public static void checkMinLength(String firstName, String lastName) {
+        if (firstName.length() < 2) {
+            System.out.println("Ad en az 2 karakter olmalıdır");
+            resultOfRule = false;
         }
 
-        return result;
+        if (lastName.length() < 2) {
+            System.out.println("Soyad en az 2 karakter olmalıdır");
+            resultOfRule = false;
+        }
     }
 }
