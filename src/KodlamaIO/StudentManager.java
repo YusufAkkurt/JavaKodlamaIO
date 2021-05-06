@@ -1,3 +1,5 @@
+package KodlamaIO;
+
 public class StudentManager extends UserManager {
     public void registerCourses(Student student) {
         System.out.println(student.getFirstName() + " is");

@@ -1,3 +1,5 @@
+package KodlamaIO;
+
 public class Main {
     public static void main(String[] args) {
         String[] courses = {"C# / Angular", "Java / React"};

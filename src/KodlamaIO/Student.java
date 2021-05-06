@@ -1,3 +1,5 @@
+package KodlamaIO;
+
 public class Student extends User {
     private String school;
     private String[] courses;

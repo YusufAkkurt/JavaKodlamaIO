@@ -1,3 +1,5 @@
+package KodlamaIO;
+
 public class InstructorManager extends UserManager {
     public void createCourses(Instructor instructor){
         System.out.println(instructor.getFirstName() + " is");
