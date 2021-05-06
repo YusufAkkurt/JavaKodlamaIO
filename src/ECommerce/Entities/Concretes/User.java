@@ -8,12 +8,13 @@ public class User implements Entity {
     private String lastName;
     private String email;
     private String password;
+    private String activateCode;
+    private String confirmActivationCode;
 
     public User() {
     }
 
     public User(int id, String firstName, String lastName, String email, String password) {
-        this();
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -59,5 +60,20 @@ public class User implements Entity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setActivateCode(String activateCode) {
+        this.activateCode = activateCode;
+    }
+
+    public void setConfirmActivationCode(String confirmActivationCode) {
+        this.confirmActivationCode = confirmActivationCode;
+    }
+
+    public boolean checkActivationCode(){
+        if (!(this.activateCode == null))
+           return this.activateCode.equals(this.confirmActivationCode);
+
+        return false;
     }
 }

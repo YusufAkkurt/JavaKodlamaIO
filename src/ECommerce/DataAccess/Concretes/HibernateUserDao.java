@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HibernateUserDao implements UserDao {
     public List<User> getAll() {
-        User user = new User(1, "Yusuf", "Akkurt", "yusuf@yusuf.com", "132456");
+        User user = new User(1, "Yusuf", "Akkurt", "yusuf@yusuaf.com", "132456");
         List<User> users = new ArrayList<>();
         users.add(user);
 
