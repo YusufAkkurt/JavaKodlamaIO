@@ -67,7 +67,14 @@ public class User implements Entity {
     }
 
     public void setConfirmActivationCode(String confirmActivationCode) {
+        boolean result = this.activateCode.equals(confirmActivationCode);
+        if (!result){
+            System.out.println("Girilen kod doğru değil, işlem başarısız");
+            return;
+        }
+
         this.confirmActivationCode = confirmActivationCode;
+        System.out.println("Active etme işlemi başarılı");
     }
 
     public boolean checkActivationCode(){

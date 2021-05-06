@@ -14,6 +14,7 @@ public class Main {
         authManager.register(user);
         System.out.println("----------------------------");
         user.setConfirmActivationCode("YUAK123");
+        System.out.println("----------------------------");
         authManager.login(user);
     }
 }
