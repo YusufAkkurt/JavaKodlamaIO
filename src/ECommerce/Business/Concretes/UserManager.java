@@ -6,7 +6,14 @@ import ECommerce.Entities.Concretes.User;
 
 import java.util.List;
 
-public record UserManager(UserDao userDao) implements UserService {
+public class UserManager implements UserService {
+
+    private final UserDao userDao;
+
+    public UserManager(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
     public boolean getByEmail(String email) {
         List<User> users = userDao.getAll();
         return users.stream().anyMatch(
